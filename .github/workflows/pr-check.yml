@@ -1,0 +1,21 @@
+# Checks pull requests into stage before they are merged: approved change requests and an approved code
+# review. Required status check in the stage ruleset. Defined in the central GxP framework.
+name: GxP pull request check
+
+on:
+  pull_request:
+    branches: [stage]
+    types: [opened, edited, synchronize, reopened]
+  pull_request_review:
+    types: [submitted, dismissed]
+
+permissions:
+  contents: read
+  pull-requests: read
+  issues: read
+
+jobs:
+  pr-check:
+    name: GxP
+    if: github.event.pull_request.base.ref == 'stage'
+    uses: Kriss-test-org/gxp-devops-framework/.github/workflows/gxp-pr-check.yml@v0.2.0-beta.3

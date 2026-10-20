@@ -4,13 +4,14 @@ name: GxP change requests
 
 on:
   issues:
-    types: [opened, edited]
+    types: [opened, edited, deleted]
   issue_comment:
     types: [created]
 
 permissions:
   contents: read
   issues: write
+  pull-requests: read
 
 jobs:
   change-request:
@@ -19,4 +20,4 @@ jobs:
     concurrency:
       group: gxp-change-request-${{ github.event.issue.number }}
       cancel-in-progress: false
-    uses: Kriss-test-org/gxp-devops-framework/.github/workflows/gxp-change-request.yml@v0.2.0-beta.2
+    uses: Kriss-test-org/gxp-devops-framework/.github/workflows/gxp-change-request.yml@v0.2.0-beta.3
