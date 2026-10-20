@@ -1,0 +1,15 @@
+{
+  "name": "gxp-demo-app",
+  "private": true,
+  "description": "Demo web application used to exercise the GxP DevOps framework.",
+  "license": "UNLICENSED",
+  "main": "src/server.js",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "pretest": "node -e \"require('node:fs').mkdirSync('test-results', { recursive: true })\"",
+    "test": "node --test --test-reporter=spec --test-reporter-destination=stdout --test-reporter=junit --test-reporter-destination=test-results/unit-tests.xml"
+  }
+}

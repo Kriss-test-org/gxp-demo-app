@@ -1,0 +1,26 @@
+# One run per release candidate: merging a pull request from develop into stage takes the candidate
+# through intake, tests, build, staging, verification, production approval and release. All steps
+# are defined and versioned in the central GxP framework.
+name: GxP release
+run-name: GxP release candidate ${{ github.run_number }}
+
+on:
+  push:
+    branches:
+      - stage
+
+permissions:
+  contents: write
+  packages: write
+  pull-requests: read
+  issues: write
+  deployments: read
+  id-token: write
+  actions: write
+
+jobs:
+  release:
+    name: Release
+    uses: Kriss-test-org/gxp-devops-framework/.github/workflows/gxp-release.yml@v0.2.0-beta.2
+    with:
+      ui-expected-text: GxP Demo App

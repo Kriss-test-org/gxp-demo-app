@@ -1,0 +1,17 @@
+# Who may do what in the GxP release process for this application. Values are GitHub usernames.
+# The framework reads this file from main, so changes to it go through a release like any other change.
+# Being listed is not enough on its own: nobody approves their own request, reviews their own code, or
+# approves a release they wrote code for or verified.
+schema: gxp-roles/v2
+
+# Approve change requests (/approve, /reject on the issue) and review code (pull requests to stage).
+change_approvers:
+  - presiyana-dimitrova
+
+# Approve the gxp-verification gate with "PASS <verification record reference>".
+verifiers:
+  - kristiyan-m-adv
+
+# Approve the gxp-production gate.
+release_approvers:
+  - presiyana-dimitrova

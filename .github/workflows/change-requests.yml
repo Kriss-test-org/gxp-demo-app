@@ -1,0 +1,22 @@
+# Issues are change requests. This keeps their labels up to date and answers /approve and /reject
+# comments. The release run re-checks every approval itself.
+name: GxP change requests
+
+on:
+  issues:
+    types: [opened, edited]
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  change-request:
+    name: Change request
+    if: ${{ !github.event.issue.pull_request }}
+    concurrency:
+      group: gxp-change-request-${{ github.event.issue.number }}
+      cancel-in-progress: false
+    uses: Kriss-test-org/gxp-devops-framework/.github/workflows/gxp-change-request.yml@v0.2.0-beta.2
