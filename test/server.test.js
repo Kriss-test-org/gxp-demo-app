@@ -46,6 +46,11 @@ test('[URS-002] the page shows OOS for a result outside the limits', async () =>
   assert.match(html, /data-testid="status">OOS</);
 });
 
+test('[URS-005] the result shows the specification limits it was evaluated against', async () => {
+  const html = await (await fetch(`${baseUrl}/?value=100&lower=95&upper=105&decimals=1`)).text();
+  assert.match(html, /data-testid="limits">\(limits 95\.0 to 105\.0\)</);
+});
+
 test('[URS-003] the page reports invalid input instead of a result', async () => {
   const html = await (await fetch(`${baseUrl}/?value=abc&lower=95&upper=105&decimals=1`)).text();
   assert.match(html, /Invalid input/);

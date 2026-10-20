@@ -25,7 +25,7 @@ function evaluateFromQuery(params) {
   const number = (name) => (params.get(name) === '' ? NaN : Number(params.get(name)));
   try {
     const spec = { lower: number('lower'), upper: number('upper'), decimals: number('decimals') };
-    return { ...evaluateResult(number('value'), spec), decimals: spec.decimals };
+    return { ...evaluateResult(number('value'), spec), ...spec };
   } catch (error) {
     return { error: error.message };
   }

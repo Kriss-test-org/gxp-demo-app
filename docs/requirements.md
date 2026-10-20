@@ -10,3 +10,4 @@ requirements. Impact assessments list the IDs a change affects.
 | URS-002 | A result outside the specification limits, after rounding, is classified as OOS (out of specification). | Yes |
 | URS-003 | Invalid input (non-numeric results, inverted limits, invalid decimals) is rejected and no classification is shown. | Yes |
 | URS-004 | The application shows which release and environment it is running, and exposes its build identity at `/version`. | No |
+| URS-005 | The result message shows the specification limits the result was evaluated against. | Yes |
