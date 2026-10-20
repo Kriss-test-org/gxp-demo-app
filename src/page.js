@@ -14,8 +14,10 @@ function renderOutcome(outcome) {
   if (outcome.error) {
     return `<p class="outcome error" role="alert">Invalid input: ${escapeHtml(outcome.error)}</p>`;
   }
+  const fixed = (n) => escapeHtml(n.toFixed(outcome.decimals));
   return `<p class="outcome ${outcome.status.toLowerCase()}" role="status">`
-    + `Reported result <strong>${escapeHtml(outcome.reported.toFixed(outcome.decimals))}</strong>: `
+    + `Reported result <strong>${fixed(outcome.reported)}</strong> `
+    + `<span data-testid="limits">(limits ${fixed(outcome.lower)} to ${fixed(outcome.upper)})</span>: `
     + `<strong data-testid="status">${escapeHtml(outcome.status)}</strong></p>`;
 }
 
